@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const API_URL = 'http://localhost:3001';
+const API_URL = 'https://subscription-tracker-production-7d8b.up.railway.app';
 
 // Styles object
 const styles = {
