@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const API_URL = 'https://subscription-tracker-production-7d8b.up.railway.app';
+const API_URL = 'https://api.sub-track.me';
 
 // Fetch wrapper that includes credentials
 const apiFetch = async (endpoint, options = {}) => {
