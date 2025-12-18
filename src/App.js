@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 const API_URL = 'https://api.sub-track.me';
 
+// Simple router based on URL path
+const getPage = () => {
+  const path = window.location.pathname;
+  if (path === '/privacy') return 'privacy';
+  return 'app';
+};
+
 // Fetch wrapper that includes credentials
 const apiFetch = async (endpoint, options = {}) => {
   const res = await fetch(`${API_URL}${endpoint}`, {
@@ -15,7 +22,178 @@ const apiFetch = async (endpoint, options = {}) => {
   return res;
 };
 
-// Styles object
+// ============================================
+// PRIVACY POLICY COMPONENT
+// ============================================
+const PrivacyPolicy = () => {
+  const pStyles = {
+    container: {
+      maxWidth: '800px',
+      margin: '0 auto',
+      padding: '40px 20px',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      color: '#1f2937',
+      lineHeight: 1.7,
+    },
+    header: { textAlign: 'center', marginBottom: '40px' },
+    title: { fontSize: '36px', fontWeight: 'bold', marginBottom: '10px' },
+    lastUpdated: { color: '#6b7280', fontSize: '14px' },
+    section: { marginBottom: '32px' },
+    h2: { fontSize: '24px', fontWeight: '600', marginBottom: '16px', color: '#111827' },
+    p: { marginBottom: '12px' },
+    ul: { marginLeft: '24px', marginBottom: '12px' },
+    li: { marginBottom: '8px' },
+    contact: { background: '#f3f4f6', padding: '20px', borderRadius: '8px', marginTop: '40px' },
+    backLink: { display: 'inline-block', marginBottom: '20px', color: '#2563eb', textDecoration: 'none' },
+  };
+
+  return (
+    <div style={pStyles.container}>
+      <a href="/" style={pStyles.backLink}>← Back to Sub-Track</a>
+      
+      <header style={pStyles.header}>
+        <h1 style={pStyles.title}>Privacy Policy</h1>
+        <p style={pStyles.lastUpdated}>Last updated: December 18, 2025</p>
+      </header>
+
+      <section style={pStyles.section}>
+        <h2 style={pStyles.h2}>Introduction</h2>
+        <p style={pStyles.p}>
+          Solved ("we," "our," or "us") operates Sub-Track (sub-track.me), a subscription tracking service. 
+          This Privacy Policy explains how we collect, use, and protect your information when you use our service.
+        </p>
+        <p style={pStyles.p}>
+          By using Sub-Track, you agree to the collection and use of information in accordance with this policy.
+        </p>
+      </section>
+
+      <section style={pStyles.section}>
+        <h2 style={pStyles.h2}>Information We Collect</h2>
+        
+        <p style={pStyles.p}><strong>Email Account Access</strong></p>
+        <p style={pStyles.p}>
+          When you connect your Gmail or Outlook account, we request read-only access to your emails. 
+          We specifically search for and analyze emails related to:
+        </p>
+        <ul style={pStyles.ul}>
+          <li style={pStyles.li}>Receipts and payment confirmations</li>
+          <li style={pStyles.li}>Subscription notifications</li>
+          <li style={pStyles.li}>Billing statements</li>
+        </ul>
+
+        <p style={pStyles.p}><strong>Information We Extract</strong></p>
+        <p style={pStyles.p}>From your emails, we extract only:</p>
+        <ul style={pStyles.ul}>
+          <li style={pStyles.li}>Service/company names</li>
+          <li style={pStyles.li}>Subscription amounts and currencies</li>
+          <li style={pStyles.li}>Billing frequency (monthly, yearly)</li>
+          <li style={pStyles.li}>Sender email addresses</li>
+        </ul>
+
+        <p style={pStyles.p}><strong>Account Information</strong></p>
+        <p style={pStyles.p}>
+          We store your email address to identify your account and link your connected email accounts together.
+        </p>
+      </section>
+
+      <section style={pStyles.section}>
+        <h2 style={pStyles.h2}>How We Use Your Information</h2>
+        <p style={pStyles.p}>We use the collected information to:</p>
+        <ul style={pStyles.ul}>
+          <li style={pStyles.li}>Detect and display your recurring subscriptions</li>
+          <li style={pStyles.li}>Calculate your total subscription spending</li>
+          <li style={pStyles.li}>Generate PDF reports of your subscriptions</li>
+          <li style={pStyles.li}>Maintain your account and preferences</li>
+        </ul>
+      </section>
+
+      <section style={pStyles.section}>
+        <h2 style={pStyles.h2}>Data Storage and Security</h2>
+        <p style={pStyles.p}>
+          Your subscription data is stored securely on our servers. We implement appropriate technical 
+          and organizational measures to protect your personal information against unauthorized access, 
+          alteration, disclosure, or destruction.
+        </p>
+        <p style={pStyles.p}>
+          <strong>Important:</strong> We do not store the full content of your emails. We only store 
+          the extracted subscription information (service names, prices, and billing cycles).
+        </p>
+      </section>
+
+      <section style={pStyles.section}>
+        <h2 style={pStyles.h2}>Third-Party Services</h2>
+        <p style={pStyles.p}>We use the following third-party services:</p>
+        <ul style={pStyles.ul}>
+          <li style={pStyles.li}><strong>Google OAuth:</strong> To authenticate Gmail access</li>
+          <li style={pStyles.li}><strong>Microsoft OAuth:</strong> To authenticate Outlook access</li>
+          <li style={pStyles.li}><strong>Railway:</strong> For hosting our backend services</li>
+          <li style={pStyles.li}><strong>Vercel:</strong> For hosting our website</li>
+        </ul>
+        <p style={pStyles.p}>
+          These services have their own privacy policies governing their use of your data.
+        </p>
+      </section>
+
+      <section style={pStyles.section}>
+        <h2 style={pStyles.h2}>Data Sharing</h2>
+        <p style={pStyles.p}>
+          We do not sell, trade, or otherwise transfer your personal information to third parties. 
+          Your subscription data is private and only visible to you.
+        </p>
+      </section>
+
+      <section style={pStyles.section}>
+        <h2 style={pStyles.h2}>Your Rights</h2>
+        <p style={pStyles.p}>You have the right to:</p>
+        <ul style={pStyles.ul}>
+          <li style={pStyles.li}><strong>Access:</strong> View all data we have stored about you</li>
+          <li style={pStyles.li}><strong>Disconnect:</strong> Remove connected email accounts at any time</li>
+          <li style={pStyles.li}><strong>Delete:</strong> Request complete deletion of your account and data</li>
+          <li style={pStyles.li}><strong>Revoke:</strong> Revoke email access through your Google or Microsoft account settings</li>
+        </ul>
+      </section>
+
+      <section style={pStyles.section}>
+        <h2 style={pStyles.h2}>Cookies and Sessions</h2>
+        <p style={pStyles.p}>
+          We use session cookies to keep you logged in. These cookies are essential for the 
+          service to function and expire after 10 days of inactivity.
+        </p>
+      </section>
+
+      <section style={pStyles.section}>
+        <h2 style={pStyles.h2}>Children's Privacy</h2>
+        <p style={pStyles.p}>
+          Sub-Track is not intended for use by children under 13 years of age. We do not knowingly 
+          collect personal information from children under 13.
+        </p>
+      </section>
+
+      <section style={pStyles.section}>
+        <h2 style={pStyles.h2}>Changes to This Policy</h2>
+        <p style={pStyles.p}>
+          We may update this Privacy Policy from time to time. We will notify you of any changes 
+          by posting the new Privacy Policy on this page and updating the "Last updated" date.
+        </p>
+      </section>
+
+      <section style={pStyles.contact}>
+        <h2 style={{...pStyles.h2, marginTop: 0}}>Contact Us</h2>
+        <p style={pStyles.p}>
+          If you have any questions about this Privacy Policy or our data practices, please contact us at:
+        </p>
+        <p style={pStyles.p}>
+          <strong>Solved</strong><br />
+          Email: <a href="mailto:yakir@solvedil.com">yakir@solvedil.com</a>
+        </p>
+      </section>
+    </div>
+  );
+};
+
+// ============================================
+// MAIN APP STYLES
+// ============================================
 const styles = {
   landingContainer: {
     minHeight: '100vh',
@@ -557,6 +735,7 @@ function App() {
 
             <p style={styles.privacyText}>
               We only read receipt emails to detect subscriptions. Your data is never shared.
+              <br /><a href="/privacy" style={{color: '#2563eb'}}>Privacy Policy</a>
             </p>
           </div>
 
@@ -723,8 +902,30 @@ function App() {
           </div>
         </div>
       </main>
+      
+      {/* Footer with Privacy link */}
+      <footer style={{textAlign: 'center', padding: '20px', color: '#6b7280', fontSize: '14px'}}>
+        <a href="/privacy" style={{color: '#6b7280'}}>Privacy Policy</a>
+      </footer>
     </div>
   );
 }
 
-export default App;
+// Router component
+function AppRouter() {
+  const [page, setPage] = useState(getPage());
+  
+  useEffect(() => {
+    const handlePopState = () => setPage(getPage());
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+  
+  if (page === 'privacy') {
+    return <PrivacyPolicy />;
+  }
+  
+  return <App />;
+}
+
+export default AppRouter;
