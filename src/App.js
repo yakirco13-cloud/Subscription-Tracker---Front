@@ -27,6 +27,10 @@ const apiFetch = async (endpoint, options = {}) => {
 // ============================================
 const PrivacyPolicy = () => {
   const pStyles = {
+    wrapper: {
+      minHeight: '100vh',
+      background: '#ffffff',
+    },
     container: {
       maxWidth: '800px',
       margin: '0 auto',
@@ -34,20 +38,22 @@ const PrivacyPolicy = () => {
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       color: '#1f2937',
       lineHeight: 1.7,
+      background: '#ffffff',
     },
     header: { textAlign: 'center', marginBottom: '40px' },
-    title: { fontSize: '36px', fontWeight: 'bold', marginBottom: '10px' },
+    title: { fontSize: '36px', fontWeight: 'bold', marginBottom: '10px', color: '#111827' },
     lastUpdated: { color: '#6b7280', fontSize: '14px' },
     section: { marginBottom: '32px' },
     h2: { fontSize: '24px', fontWeight: '600', marginBottom: '16px', color: '#111827' },
-    p: { marginBottom: '12px' },
+    p: { marginBottom: '12px', color: '#374151' },
     ul: { marginLeft: '24px', marginBottom: '12px' },
-    li: { marginBottom: '8px' },
+    li: { marginBottom: '8px', color: '#374151' },
     contact: { background: '#f3f4f6', padding: '20px', borderRadius: '8px', marginTop: '40px' },
     backLink: { display: 'inline-block', marginBottom: '20px', color: '#2563eb', textDecoration: 'none' },
   };
 
   return (
+    <div style={pStyles.wrapper}>
     <div style={pStyles.container}>
       <a href="/" style={pStyles.backLink}>← Back to Sub-Track</a>
       
@@ -184,9 +190,10 @@ const PrivacyPolicy = () => {
         </p>
         <p style={pStyles.p}>
           <strong>Solved</strong><br />
-          Email: <a href="mailto:yakir@solvedil.com">yakir@solvedil.com</a>
+          Email: <a href="mailto:yakir@solvedil.com" style={{color: '#2563eb'}}>yakir@solvedil.com</a>
         </p>
       </section>
+    </div>
     </div>
   );
 };
